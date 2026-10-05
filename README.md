@@ -19,9 +19,13 @@ Sample data used across all stages:
 | Tool | Details per stage |
 | :--- | :--- |
 | Gemini | Used for structuring CSS Grid/Flexbox and responsive design rules for stage 1. |
+| Gemini | Stage 2: Used for writing immutable array functions (map, filter, reduce) and validation logic. |
 
 ## How to run
 Open index.html in a browser. No build step, no server.
+
+## Stage 1: static mockup
+Static HTML and CSS interface. The project contains a semantic structure with an header, a form section, and a list of cards displaying sample data, fully styled with CSS Grid, Flexbox, variables, and a dark mode theme.
 
 ## Stage 2: data logic
 Plain JavaScript, no DOM. activitati.js holds the array and the functions
