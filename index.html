@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UniHub - Mockup</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header class="app-header">
+        <h1>UniHub</h1>
+        <p>Gestionează evenimentele și proiectele asociației studențești.</p>
+        <p class="app-count">3 activități, dintre care 2 în derulare</p>
+    </header>
+
+    <main class="container">
+        <!-- Panoul formularului de adăugare -->
+        <section class="panel">
+            <h2>Adaugă activitate</h2>
+            <form class="item-form">
+                <label>Titlu 
+                    <input type="text" name="titlu" placeholder="Ex: Atelier de React" />
+                </label>
+                <label>Tip activitate
+                    <select name="eticheta">
+                        <option value="workshop">Workshop</option>
+                        <option value="hackathon">Hackathon</option>
+                        <option value="social">Social</option>
+                    </select>
+                </label>
+                <button type="submit">Adaugă</button>
+            </form>
+        </section>
+
+        <!-- Panoul cu lista de carduri -->
+        <section class="panel">
+            <h2>Activitățile noastre</h2>
+            <!-- <p class="empty">Nu există nicio activitate.</p> -->
+            <ul class="item-list">
+                <li class="item-card">
+                    <div>
+                        <h3>Atelier de React</h3>
+                        <span class="badge badge-workshop">Workshop</span>
+                    </div>
+                    <span class="status">În derulare</span>
+                </li>
+                <li class="item-card done">
+                    <div>
+                        <h3>Hackathon CodeSprint</h3>
+                        <span class="badge badge-hackathon">Hackathon</span>
+                    </div>
+                    <span class="status">Finalizată</span>
+                </li>
+                <li class="item-card">
+                    <div>
+                        <h3>Seara de board games</h3>
+                        <span class="badge badge-social">Social</span>
+                    </div>
+                    <span class="status">În derulare</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        Proiect Tehnologii Web - UniHub
+    </footer>
+</body>
+</html>
