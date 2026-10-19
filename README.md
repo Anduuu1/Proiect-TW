@@ -21,6 +21,7 @@ Sample data used across all stages:
 | Gemini | Stage 1: Used for structuring CSS Grid/Flexbox and responsive design rules. |
 | Gemini | Stage 2: Used for writing immutable array functions (map, filter, reduce) and validation logic. |
 | Gemini | Stage 3: Used for setting up the Vite React project, JSX syntax conversion, and cleaning boilerplate code. |
+| Gemini | Stage 4: Used for structuring React components, passing data via props, dynamic list rendering using .map() and key, and conditional rendering. |
 
 ## How to run
 ```bash
