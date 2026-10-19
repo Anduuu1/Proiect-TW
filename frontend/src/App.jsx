@@ -1,8 +1,10 @@
 const activitati = [
-  { id: 1, titlu: "Atelier de React", gata: false, eticheta: "workshop" },
-  { id: 2, titlu: "Hackathon CodeSprint", gata: true, eticheta: "hackathon" },
-  { id: 3, titlu: "Seara de board games", gata: false, eticheta: "social" }
+  { id: 1, titlu: "Atelier de React", gata: false, prioritate: "mare" },
+  { id: 2, titlu: "Hackathon CodeSprint", gata: true, prioritate: "medie" },
+  { id: 3, titlu: "Seara de board games", gata: false, prioritate: "mica" }
 ];
+
+import TaskList from "./components/TaskList.jsx";
 
 export default function App() {
   const inDerulare = activitati.filter((t) => !t.gata).length;
@@ -20,8 +22,7 @@ export default function App() {
       <main className="container">
         <section className="panel">
           <h2>Activitățile noastre</h2>
-          {/* Temporar: date brute sub formă de JSON; componentele apar în Etapa 4 */}
-          <pre>{JSON.stringify(activitati, null, 2)}</pre>
+          <TaskList activitati={activitati} />
         </section>
       </main>
     </>

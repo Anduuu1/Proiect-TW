@@ -4,7 +4,7 @@
 - Gemini
 
 ## Conversations
-- https://gemini.google.com/u/1/app/b52e3266dc5d1222/ (Help with immutable array methods like map, filter, and reduce for managing the student association items)
+- https://gemini.google.com/u/1/app/b52e3266dc5d1222 (Help with immutable array methods like map, filter, and reduce for managing the student association items)
 
 ## Key requests
 ### 1. Immutable array operations and validation

@@ -38,8 +38,35 @@ that read and change it. Results are printed in the browser console (F12).
 ## Stage 3: Vite and React project
 The app now lives in frontend/, built with Vite. The data from stage 2 moved into the main component; the list is still printed raw.
 
+## Stage 4: components
+The list is rendered from the data, through two components:
+- TaskList receives the whole array and renders one card per item
+- TaskCard receives a single item through props and displays it
+
+## Stage 4: Checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+|---|---|---|---|
+| S4-R1 | 2+ components in src/components/ | [frontend/src/components/](https://github.com/Anduuu1/Proiect-TW/tree/main/frontend/src/components) | open folder |
+| S4-R2 | card receives data through props | [TaskCard.jsx](https://github.com/Anduuu1/Proiect-TW/blob/main/frontend/src/components/TaskCard.jsx) | read |
+| S4-R3 | map + key={id}, no console warnings | [TaskList.jsx](https://github.com/Anduuu1/Proiect-TW/blob/main/frontend/src/components/TaskList.jsx) | F12, Console |
+| S4-R4 | message for empty list | [TaskList.jsx](https://github.com/Anduuu1/Proiect-TW/blob/main/frontend/src/components/TaskList.jsx) | set array to [] |
+| S4-R5 | state changes the card look | [TaskCard.jsx](https://github.com/Anduuu1/Proiect-TW/blob/main/frontend/src/components/TaskCard.jsx) | toggle a done flag |
+| S4-R6 | README Stage 4 section + AI log | [README.md](https://github.com/Anduuu1/Proiect-TW/blob/main/README.md), [ai-log/etapa-04.md](https://github.com/CONTRIBUTOR/REPOSITORY/blob/main/ai-log/etapa-04.md) | read |
+| S4-R7 | commit “Stage 4” pushed | [Commit history](https://github.com/Anduuu1/Proiect-TW/commits/main) | commit history |
+
+## Stage 4 Checklist Status
+- [x] S4-R1 Există cel puțin două componente în src/components/, câte una pe fișier.
+- [x] S4-R2 Cardul primește datele prin props și nu citește array-ul direct.
+- [x] S4-R3 Lista este randată cu map și key={id}, fără avertismente în consolă.
+- [x] S4-R4 Lista goală afișează un mesaj.
+- [x] S4-R5 Starea elementului modifică aspectul cardului.
+- [x] S4-R6 README-ul este actualizat, iar ai-log/etapa-04.md este completat.
+- [x] S4-R7 Commit-ul Stage 4: ... este publicat pe GitHub.
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
-- [ ] Stage 4: Components built from data
+- [x] Stage 4: components rendered from data
+- [ ] Stage 5: local state and events
