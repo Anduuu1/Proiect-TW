@@ -22,6 +22,7 @@ Sample data used across all stages:
 | Gemini | Stage 2: Used for writing immutable array functions (map, filter, reduce) and validation logic. |
 | Gemini | Stage 3: Used for setting up the Vite React project, JSX syntax conversion, and cleaning boilerplate code. |
 | Gemini | Stage 4: Used for structuring React components, passing data via props, dynamic list rendering using .map() and key, and conditional rendering. |
+| Gemini | Stage 5: Used for implementing local state (`useState`) and immutable event handlers for toggle and delete actions. |
 
 ## How to run
 ```bash
@@ -65,9 +66,25 @@ The list is rendered from the data, through two components:
 - [x] S4-R6 README-ul este actualizat, iar ai-log/etapa-04.md este completat.
 - [x] S4-R7 Commit-ul Stage 4: ... este publicat pe GitHub.
 
+## Stage 5: local state and events
+The list lives in React state. Checking and deleting work from the page, and the counters in the header follow automatically. A button in the header switches between light and dark mode. Changes are lost on refresh, which is what stage 6 and stage 10 fix.
+
+### Stage 5 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S5-R1 | list kept in useState, in App | [App.jsx](frontend/src/App.jsx) | read |
+| S5-R2 | toggling changes state and card look | [App.jsx](frontend/src/App.jsx) / [TaskCard.jsx](frontend/src/components/TaskCard.jsx) | click a checkbox |
+| S5-R3 | delete removes the item | [App.jsx](frontend/src/App.jsx) / [TaskCard.jsx](frontend/src/components/TaskCard.jsx) | click Delete |
+| S5-R4 | header counter derived, not in state | [App.jsx](frontend/src/App.jsx) | toggle, watch header |
+| S5-R5 | immutable updates (no push, splice, assignment) | [App.jsx](frontend/src/App.jsx) | read |
+| S5-R6 | light/dark toggle: state + data-theme on html | [App.jsx](frontend/src/App.jsx) / [App.css](frontend/src/App.css) | click the button, both system themes |
+| S5-R7 | no console warnings; README + AI log | [README.md](README.md) / [ai-log/etapa-05.md](ai-log/etapa-05.md) | F12, Console |
+| S5-R8 | commit "Stage 5" pushed | Commit history | commit history |
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
-- [x] Stage 4: components rendered from data
-- [ ] Stage 5: local state and events
+- [x] Stage 4: Components rendered from data
+- [x] Stage 5: Local state and events
+- [ ] Stage 6: Loading data from a mock API

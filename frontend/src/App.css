@@ -3,64 +3,277 @@
 }
 
 :root {
-    --bg: #f4f5f7;
+    --bg: #f1f5f9;
     --card: #ffffff;
-    --text: #1f2933;
-    --muted: #6b7280;
-    --accent: #5b3fd9;
-    --accent-dark: #4338ca;
-    --accent-soft: #ede9fe;
-    --border: #e5e7eb;
+    --text: #0f172a;
+    --muted: #64748b;
+    --accent: #8b5cf6;
+    --accent-dark: #7c3aed;
+    --border: #e2e8f0;
     
-    --badge-workshop: #2563eb;
-    --badge-hackathon: #9333ea;
-    --badge-social: #059669;
+    /* Culori speciale pentru priorități */
+    --badge-mica: #0ea5e9;   /* Cyan / Albastru deschis */
+    --badge-medie: #f59e0b;  /* Portocaliu cald */
+    --badge-mare: #ef4444;   /* Roșu intens */
 }
 
 body {
     margin: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.5;
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* Antet spectaculos cu gradient dinamic */
 .app-header {
-    background: var(--accent);
+    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #2563eb 100%);
     color: #ffffff;
     text-align: center;
-    padding: 32px 16px;
+    padding: 64px 16px;
+    position: relative;
+    box-shadow: 0 15px 35px -5px rgba(124, 58, 237, 0.35);
+    overflow: hidden;
+}
+
+.app-header::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    transform: rotate(30deg);
+    pointer-events: none;
 }
 
 .app-header h1 {
-    margin: 0 0 8px 0;
+    margin: 0 0 10px 0;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    background: linear-gradient(to right, #ffffff, #e9d5ff, #38bdf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Logo geometric animat cu strălucire neon */
+.app-header h1::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #06b6d4;
+    border-radius: 6px;
+    box-shadow: 0 0 16px #06b6d4, 0 0 32px #06b6d4;
+    animation: pulseGlow 2s infinite ease-in-out;
 }
 
 .app-header p {
-    margin: 4px 0;
+    margin: 6px 0;
     opacity: 0.9;
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.app-count {
+    font-size: 0.9rem;
+    opacity: 0.95;
+    margin-top: 16px !important;
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    backdrop-filter: blur(6px);
 }
 
 .container {
-    max-width: 1000px;
-    margin: 24px auto;
+    max-width: 900px;
+    margin: 40px auto;
     padding: 0 16px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-    align-items: start;
 }
 
 .panel {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .panel h2 {
     margin-top: 0;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+    color: var(--text);
+}
+
+/* Format nou: Listă organizată în Grid pe coloane */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* Format carduri individuale cu bandă laterală și efect de plutire */
+.task-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: cardSlideUp 0.5s ease forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.task-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--accent);
+}
+
+.task-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px -10px rgba(139, 92, 246, 0.25);
+  transform: translateY(-4px);
+}
+
+.task-card.done {
+  opacity: 0.75;
+}
+
+.task-card.done h3 {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.task-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.task-main input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 2px;
+  transition: transform 0.2s;
+}
+
+.task-main input[type="checkbox"]:hover {
+  transform: scale(1.15);
+}
+
+.task-card div h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* Badge-uri de prioritate stilizate modern */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.badge-mica { background: var(--badge-mica); color: #030712; }
+.badge-medie { background: var(--badge-medie); color: #030712; }
+.badge-mare { background: var(--badge-mare); color: #ffffff; }
+
+/* Butonul de ștergere poziționat în colțul de jos al cardului */
+.btn-danger {
+  align-self: flex-end;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.05);
+  color: #ef4444;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+  transform: scale(1.05);
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 32px;
+  font-size: 1.05rem;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover { 
+  background: rgba(139, 92, 246, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
 }
 
 :focus-visible {
@@ -68,13 +281,115 @@ body {
     outline-offset: 2px;
 }
 
+@keyframes cardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px #06b6d4;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px #06b6d4, 0 0 35px #8b5cf6;
+    transform: scale(1.1);
+  }
+}
+
+/* Tema întunecată (Dark Mode - Negru mat profund OLED cu text alb) */
 @media (prefers-color-scheme: dark) {
-    :root {
-        --bg: #14121d;
-        --card: #1e1b2e;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --border: #352f4d;
-        --accent-soft: #2a2342;
-    }
+  :root:not([data-theme="light"]) {
+    --bg: #030712;
+    --card: #0f172a;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --border: #1e293b;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #030712;
+  --card: #0f172a;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #1e293b;
+}
+
+/* Tema luminoasă (Light Mode - Alb curat, text negru) */
+:root[data-theme="light"] {
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+
+/* Stil pentru iconița SVG din antet */
+.app-logo-icon {
+    width: 36px;
+    height: 36px;
+    stroke: #38bdf8;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+/* Stiluri pentru subsol și ursul panda plasat jos de tot */
+.app-footer {
+  text-align: center;
+  padding: 32px 16px;
+  margin-top: 48px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  background: var(--card);
+}
+
+.panda-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.panda-icon {
+  font-size: 2.5rem;
+  animation: bouncePanda 2s infinite ease-in-out;
+  display: inline-block;
+}
+
+@keyframes bouncePanda {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
