@@ -1,20 +1,21 @@
+
 * {
     box-sizing: border-box;
 }
 
 :root {
-    --bg: #f1f5f9;
+    --bg: #f7f7fc;
     --card: #ffffff;
-    --text: #0f172a;
-    --muted: #64748b;
-    --accent: #8b5cf6;
-    --accent-dark: #7c3aed;
-    --border: #e2e8f0;
-    
-    /* Culori speciale pentru priorități */
-    --badge-mica: #0ea5e9;   /* Cyan / Albastru deschis */
-    --badge-medie: #f59e0b;  /* Portocaliu cald */
-    --badge-mare: #ef4444;   /* Roșu intens */
+    --text: #202039;
+    --muted: #85859c;
+    --accent: #7856e8;
+    --accent-dark: #6040ce;
+    --accent-soft: rgba(120, 86, 232, 0.1);
+    --border: #e9e7f2;
+
+    --badge-mica: #36b99a;
+    --badge-medie: #efa947;
+    --badge-mare: #e87883;
 }
 
 body {
@@ -26,88 +27,79 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Antet spectaculos cu gradient dinamic */
+/* HEADER */
+
 .app-header {
-    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #2563eb 100%);
+    background: linear-gradient(135deg, #6044c9 0%, #8060e8 55%, #987df0 100%);
     color: #ffffff;
     text-align: center;
-    padding: 64px 16px;
+    padding: 56px 20px;
     position: relative;
-    box-shadow: 0 15px 35px -5px rgba(124, 58, 237, 0.35);
-    overflow: hidden;
-}
-
-.app-header::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
-    transform: rotate(30deg);
-    pointer-events: none;
+    box-shadow: 0 10px 30px -5px rgba(96, 68, 201, 0.25);
+    margin-bottom: 40px;
 }
 
 .app-header h1 {
     margin: 0 0 10px 0;
-    font-size: 3rem;
+    font-size: 2.75rem;
     font-weight: 900;
     letter-spacing: -0.04em;
     display: inline-flex;
     align-items: center;
     gap: 14px;
     animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    background: linear-gradient(to right, #ffffff, #e9d5ff, #38bdf8);
-    -webkit-background-clip: text;
+    background: linear-gradient(to right, #ffffff, #e2d8ff, #b9e9ff);
     background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* Logo geometric animat cu strălucire neon */
-.app-header h1::before {
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: #06b6d4;
-    border-radius: 6px;
-    box-shadow: 0 0 16px #06b6d4, 0 0 32px #06b6d4;
+/* LOGO - păstrat la dimensiunea originală */
+
+.app-logo-icon {
+    width: 36px;
+    height: 36px;
+    stroke: #b9e9ff;
+    filter: drop-shadow(0 0 8px rgba(185, 233, 255, 0.45));
     animation: pulseGlow 2s infinite ease-in-out;
 }
 
 .app-header p {
-    margin: 6px 0;
+    margin: 4px 0;
     opacity: 0.9;
-    font-size: 1.1rem;
-    color: #e2e8f0;
+    font-size: 1.05rem;
+    color: #f0edff;
     animation: fadeInUp 0.6s ease forwards;
 }
 
 .app-count {
     font-size: 0.9rem;
-    opacity: 0.95;
-    margin-top: 16px !important;
+    opacity: 0.9;
+    margin-top: 14px !important;
     display: inline-block;
     padding: 6px 16px;
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     backdrop-filter: blur(6px);
 }
 
+/* CONTAINER */
+
 .container {
     max-width: 900px;
-    margin: 40px auto;
-    padding: 0 16px;
+    margin: 0 auto 48px auto;
+    padding: 0 20px;
 }
+
+/* PANEL */
 
 .panel {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 28px;
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+    padding: 32px;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
     transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -117,163 +109,184 @@ body {
     font-weight: 700;
     letter-spacing: -0.015em;
     border-bottom: 2px solid var(--border);
-    padding-bottom: 14px;
-    margin-bottom: 22px;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
     color: var(--text);
 }
 
-/* Format nou: Listă organizată în Grid pe coloane */
+/* TASK GRID */
+
 .task-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
 }
 
-/* Format carduri individuale cu bandă laterală și efect de plutire */
+/* TASK CARDS */
+
 .task-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 20px;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--card);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: cardSlideUp 0.5s ease forwards;
-  position: relative;
-  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: cardSlideUp 0.5s ease forwards;
+    position: relative;
+    overflow: hidden;
 }
 
 .task-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5px;
-  height: 100%;
-  background: var(--accent);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--accent);
 }
 
 .task-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 12px 30px -10px rgba(139, 92, 246, 0.25);
-  transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 30px -10px rgba(120, 86, 232, 0.2);
+    transform: translateY(-4px);
 }
 
 .task-card.done {
-  opacity: 0.75;
+    opacity: 0.75;
 }
 
 .task-card.done h3 {
-  text-decoration: line-through;
-  color: var(--muted);
+    text-decoration: line-through;
+    color: var(--muted);
 }
 
+/* TASK MAIN */
+
 .task-main {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 16px;
 }
 
 .task-main input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
-  accent-color: var(--accent);
-  cursor: pointer;
-  border-radius: 6px;
-  margin-top: 2px;
-  transition: transform 0.2s;
+    width: 22px;
+    height: 22px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 2px;
+    transition: transform 0.2s;
 }
 
 .task-main input[type="checkbox"]:hover {
-  transform: scale(1.15);
+    transform: scale(1.15);
 }
 
 .task-card div h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.4;
+    margin: 0 0 8px 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+    word-break: break-word;
 }
 
-/* Badge-uri de prioritate stilizate modern */
+/* PRIORITY BADGES */
+
 .badge {
     display: inline-block;
-    padding: 3px 10px;
+    padding: 4px 10px;
     font-size: 0.75rem;
     font-weight: 700;
     color: #ffffff;
     border-radius: 6px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-top: 4px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.badge-mica { background: var(--badge-mica); color: #030712; }
-.badge-medie { background: var(--badge-medie); color: #030712; }
-.badge-mare { background: var(--badge-mare); color: #ffffff; }
+.badge-mica {
+    background: var(--badge-mica);
+    color: #ffffff;
+}
 
-/* Butonul de ștergere poziționat în colțul de jos al cardului */
+.badge-medie {
+    background: var(--badge-medie);
+    color: #292039;
+}
+
+.badge-mare {
+    background: var(--badge-mare);
+    color: #ffffff;
+}
+
+/* DELETE BUTTON */
+
 .btn-danger {
-  align-self: flex-end;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  background: rgba(239, 68, 68, 0.05);
-  color: #ef4444;
-  border-radius: 8px;
-  padding: 6px 14px;
-  font: inherit;
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
+    align-self: flex-end;
+    border: 1px solid rgba(232, 120, 131, 0.3);
+    background: rgba(232, 120, 131, 0.05);
+    color: #df6474;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .btn-danger:hover {
-  background: #ef4444;
-  color: #fff;
-  border-color: #ef4444;
-  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
-  transform: scale(1.05);
+    background: #e87883;
+    color: #fff;
+    border-color: #e87883;
+    box-shadow: 0 0 12px rgba(232, 120, 131, 0.3);
+    transform: scale(1.05);
 }
+
+/* EMPTY STATE */
 
 .empty {
-  text-align: center;
-  color: var(--muted);
-  font-style: italic;
-  padding: 32px;
-  font-size: 1.05rem;
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+    padding: 32px;
+    font-size: 1.05rem;
 }
+
+/* THEME BUTTON */
 
 .theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  padding: 9px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  transition: all 0.2s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 9px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
 }
 
-.theme-toggle:hover { 
-  background: rgba(139, 92, 246, 0.5);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-1px);
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
 }
 
 :focus-visible {
@@ -281,115 +294,348 @@ body {
     outline-offset: 2px;
 }
 
-@keyframes cardSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* FOOTER */
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 10px #06b6d4;
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 20px #06b6d4, 0 0 35px #8b5cf6;
-    transform: scale(1.1);
-  }
-}
-
-/* Tema întunecată (Dark Mode - Negru mat profund OLED cu text alb) */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #030712;
-    --card: #0f172a;
-    --text: #f8fafc;
-    --muted: #94a3b8;
-    --border: #1e293b;
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg: #030712;
-  --card: #0f172a;
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --border: #1e293b;
-}
-
-/* Tema luminoasă (Light Mode - Alb curat, text negru) */
-:root[data-theme="light"] {
-  --bg: #f1f5f9;
-  --card: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
-}
-
-/* Stil pentru iconița SVG din antet */
-.app-logo-icon {
-    width: 36px;
-    height: 36px;
-    stroke: #38bdf8;
-    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
-    animation: pulseGlow 2s infinite ease-in-out;
-}
-
-/* Stiluri pentru subsol și ursul panda plasat jos de tot */
 .app-footer {
-  text-align: center;
-  padding: 32px 16px;
-  margin-top: 48px;
-  color: var(--muted);
-  border-top: 1px solid var(--border);
-  background: var(--card);
+    text-align: center;
+    padding: 32px 16px;
+    margin-top: 48px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    background: var(--card);
+
+    /* Centrare completă */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .panda-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    gap: 8px;
 }
 
 .panda-icon {
-  font-size: 2.5rem;
-  animation: bouncePanda 2s infinite ease-in-out;
-  display: inline-block;
+    font-size: 2.5rem;
+    animation: bouncePanda 2s infinite ease-in-out;
+    display: block;
+    margin: 0 auto;
 }
 
+.panda-container p {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* PANDA ANIMATION */
+
 @keyframes bouncePanda {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* CARD ANIMATION */
+
+@keyframes cardSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HEADER ANIMATIONS */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* LOGO GLOW */
+
+@keyframes pulseGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 7px rgba(185, 233, 255, 0.4));
+        transform: scale(1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 14px rgba(185, 233, 255, 0.7));
+        transform: scale(1.08);
+    }
+}
+
+/* DARK MODE - SYSTEM */
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #151522;
+        --card: #202031;
+        --text: #f3f1ff;
+        --muted: #aaa7c1;
+        --border: #333247;
+    }
+}
+
+/* DARK MODE */
+
+:root[data-theme="dark"] {
+    --bg: #151522;
+    --card: #202031;
+    --text: #f3f1ff;
+    --muted: #aaa7c1;
+    --border: #333247;
+}
+
+/* LIGHT MODE */
+
+:root[data-theme="light"] {
+    --bg: #f7f7fc;
+    --card: #ffffff;
+    --text: #202039;
+    --muted: #85859c;
+    --border: #e9e7f2;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .app-header {
+        padding: 65px 18px 40px;
+    }
+
+    .app-header h1 {
+        font-size: 2.3rem;
+    }
+
+    .theme-toggle {
+        top: 12px;
+        right: 12px;
+        padding: 7px 11px;
+        font-size: 0.75rem;
+    }
+
+    .container {
+        padding: 0 14px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    .task-list {
+        grid-template-columns: 1fr;
+    }
+
+    .app-footer {
+        padding: 28px 16px;
+    }
+}
+
+/* Statistici din header */
+.header-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.header-stats .app-count {
+    margin: 0 !important;
+}
+
+/* Indicator voluntari liberi */
+.volunteer-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border-color: rgba(74, 222, 128, 0.35);
+}
+
+.volunteer-count strong {
+    color: #86efac;
+    font-weight: 800;
+}
+
+.volunteer-status-dot {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+    animation: volunteerPulse 2s infinite;
+}
+
+.volunteer-status {
+    color: #86efac;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-left: 3px;
+}
+
+@keyframes volunteerPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.85);
+    }
+}
+
+@media (max-width: 600px) {
+    .header-stats {
+        flex-direction: column;
+    }
+}
+.volunteer-count {
+    min-width: 210px;
+    justify-content: center;
+    padding: 10px 18px;
+}
+
+.volunteer-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.volunteer-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.volunteer-progress {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.volunteer-progress-fill {
+    height: 100%;
+    background: #4ade80;
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+.volunteer-target {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+/* Refresh button - stânga jos */
+
+.refresh-button {
+    position: fixed;
+    bottom: 22px;
+    left: 22px;
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #6044c9, #987df0);
+    color: white;
+
+    font-size: 27px;
+    font-weight: 700;
+
+    cursor: pointer;
+    z-index: 999;
+
+    box-shadow: 0 5px 15px rgba(96, 68, 201, 0.3);
+    transition: all 0.25s ease;
+}
+
+.refresh-button:hover {
+    transform: rotate(180deg) scale(1.1);
+    box-shadow: 0 7px 20px rgba(96, 68, 201, 0.45);
+}
+
+.refresh-button:active {
+    transform: scale(0.9);
+}
+
+
+/* Etapa 6 - starea de încărcare */
+.info {
+    color: var(--muted);
+    padding: 15px 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Etapa 6 - starea de eroare */
+.error {
+    color: #be185d;
+    background: #fdf2f8;
+    border: 1px solid #fbcfe8;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin: 15px 0;
+    font-size: 0.9rem;
+}
+
+.error code {
+    font-weight: 700;
+}
+
+/* Dark mode - eroare */
+:root[data-theme="dark"] .error {
+    color: #f9a8d4;
+    background: #3b1d2e;
+    border-color: #6b2a4a;
 }

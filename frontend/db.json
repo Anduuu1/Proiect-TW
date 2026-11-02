@@ -1,0 +1,35 @@
+
+{
+  "activitati": [
+    {
+      "id": 1,
+      "titlu": "Atelier de React",
+      "gata": false,
+      "prioritate": "mare"
+    },
+    {
+      "id": 2,
+      "titlu": "Hackathon CodeSprint",
+      "gata": true,
+      "prioritate": "medie"
+    },
+    {
+      "id": 3,
+      "titlu": "Seara de board games",
+      "gata": false,
+      "prioritate": "mica"
+    },
+    {
+      "id": 4,
+      "titlu": "Workshop de dezvoltare personală",
+      "gata": false,
+      "prioritate": "medie"
+    },
+    {
+      "id": 5,
+      "titlu": "Întâlnire comunitate studențească",
+      "gata": true,
+      "prioritate": "mica"
+    }
+  ]
+}
