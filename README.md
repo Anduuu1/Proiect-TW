@@ -23,12 +23,24 @@ Sample data used across all stages:
 | Gemini | Stage 3: Used for setting up the Vite React project, JSX syntax conversion, and cleaning boilerplate code. |
 | Gemini | Stage 4: Used for structuring React components, passing data via props, dynamic list rendering using .map() and key, and conditional rendering. |
 | Gemini | Stage 5: Used for implementing local state (`useState`) and immutable event handlers for toggle and delete actions. |
+| ChatGPT | Stage 6: Used for configuring json-server, creating db.json, separating API requests into api.js, configuring environment variables, implementing useEffect for data fetching, and handling loading and error states. |
 
 ## How to run
+
+Open two terminals.
+
+Terminal 1:
 ```bash
 cd frontend
 npm install
+npm run api
+
+Terminal 2:
+```bash
+cd frontend
 npm run dev
+
+
 
 ## Stage 1: static mockup
 Static HTML and CSS interface. The project contains a semantic structure with an header, a form section, and a list of cards displaying sample data, fully styled with CSS Grid, Flexbox, variables, and a dark mode theme.
@@ -81,10 +93,48 @@ The list lives in React state. Checking and deleting work from the page, and the
 | S5-R7 | no console warnings; README + AI log | [README.md](README.md) / [ai-log/etapa-05.md](ai-log/etapa-05.md) | F12, Console |
 | S5-R8 | commit "Stage 5" pushed | Commit history | commit history |
 
+
+## Stage 6: loading data from a mock API
+
+The activities are now loaded from a mock REST API using json-server. The data is stored in db.json instead of being hardcoded in App.jsx.
+
+The API requests are separated into src/api.js, where fetchActivitati() retrieves the activities from the /activitati endpoint. The API URL is configurable through the VITE_API_URL environment variable, with localhost:3001 as the default.
+
+App.jsx uses useEffect to fetch the activities when the application loads. While the request is pending, a loading message is displayed. If the API request fails, an error message is shown.
+
+The application still supports local toggling and deleting of activities. These changes are not yet saved to the server and are lost on refresh. Persistent updates will be implemented in a later stage.
+
+ npm run api # terminal 1, http://localhost:3001
+ npm run dev # terminal 2, http://localhost:5173
+
+### Stage 6 Checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S6-R1 | json-server installed and configured | [package.json](frontend/package.json) | run npm run api |
+| S6-R2 | 5+ activities stored in db.json | [db.json](frontend/db.json) | open localhost:3001/activitati |
+| S6-R3 | activities fetched using useEffect | [App.jsx](frontend/src/App.jsx) | reload the application |
+| S6-R4 | loading and error states displayed | [App.jsx](frontend/src/App.jsx) / [App.css](frontend/src/App.css) | stop API and reload |
+| S6-R5 | API requests separated into api.js and URL configurable through environment variables | [api.js](frontend/src/api.js) / [.env.example](frontend/.env.example) | inspect files |
+| S6-R6 | README Stage 6 section and AI log updated | [README.md](README.md) / [ai-log/etapa-06.md](ai-log/etapa-06.md) | read |
+| S6-R7 | commit "Stage 6" pushed | [Commit history](https://github.com/Anduuu1/Proiect-TW/commits/main) | commit history |
+
+### Stage 6 Checklist Status
+
+- [x] S6-R1 json-server is installed and configured.
+- [x] S6-R2 At least 5 activities are stored in db.json.
+- [x] S6-R3 Activities are fetched using useEffect.
+- [x] S6-R4 Loading and error messages are displayed.
+- [x] S6-R5 API requests are separated into api.js and the URL is configurable.
+- [x] S6-R6 README and AI log are updated.
+- [x] S6-R7 Commit "Stage 6" is published on GitHub.
+
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: Components rendered from data
 - [x] Stage 5: Local state and events
-- [ ] Stage 6: Loading data from a mock API
+- [x] Stage 6: Loading data from a mock API
+- [ ] Stage 7: form and validation
