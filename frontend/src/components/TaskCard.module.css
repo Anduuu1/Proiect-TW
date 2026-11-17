@@ -1,0 +1,77 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: cardSlideUp 0.5s ease forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--accent);
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px -10px rgba(120, 86, 232, 0.2);
+  transform: translateY(-4px);
+}
+
+.done {
+  opacity: 0.75;
+}
+
+.main {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.main input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 2px;
+  transition: transform 0.2s;
+}
+
+.main input[type="checkbox"]:hover {
+  transform: scale(1.15);
+}
+
+.title {
+  display: block;
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  word-break: break-word;
+  text-decoration: none;
+}
+
+.title:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.done .title {
+  text-decoration: line-through;
+  color: var(--muted);
+}

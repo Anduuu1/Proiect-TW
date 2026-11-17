@@ -24,6 +24,8 @@ Sample data used across all stages:
 | Gemini | Stage 4: Used for structuring React components, passing data via props, dynamic list rendering using .map() and key, and conditional rendering. |
 | Gemini | Stage 5: Used for implementing local state (`useState`) and immutable event handlers for toggle and delete actions. |
 | ChatGPT | Stage 6: Used for configuring json-server, creating db.json, separating API requests into api.js, configuring environment variables, implementing useEffect for data fetching, and handling loading and error states. |
+| ChatGPT | Stage 7: Used for implementing controlled form inputs, title validation, POST/PATCH/DELETE API requests, error handling, submission state, data-testid attributes, and testing API persistence. |
+| ChatGPT | Stage 8: Used for implementing React Router navigation, activity detail pages, shared layouts, About and Not Found pages, CSS Modules, preserving data-testid attributes, and testing routes and navigation. |
 
 ## How to run
 
@@ -130,6 +132,89 @@ The application still supports local toggling and deleting of activities. These 
 - [x] S6-R7 Commit "Stage 6" is published on GitHub.
 
 
+## Stage 7: form and validation
+
+The application now supports creating, updating, and deleting activities through the mock REST API.
+
+A controlled form allows users to add activities by entering a title and selecting a priority (small, medium, or high). The title is required and limited to 100 characters. Validation errors are displayed directly in the form.
+
+All API requests are handled in src/api.js through a shared request() function. The application uses POST to create activities, PATCH to update their completion status, and DELETE to remove them.
+
+The interface updates only after the server confirms the operation. If a request fails, an error message is displayed and the form preserves the entered text. The submit button is disabled while a request is pending to prevent duplicate submissions.
+
+Data-testid attributes were added to the form, activity cards, loading state, error state, and empty-list message to support automated testing.
+
+### Stage 7 Checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S7-R1 | Controlled form with title and priority | [TaskForm.jsx](frontend/src/components/TaskForm.jsx) | inspect form |
+| S7-R2 | Required title and maximum 100 characters | [TaskForm.jsx](frontend/src/components/TaskForm.jsx) | submit empty title / enter long title |
+| S7-R3 | Shared API request function and POST/PATCH/DELETE | [api.js](frontend/src/api.js) | inspect API functions |
+| S7-R4 | New activities are saved through POST | [App.jsx](frontend/src/App.jsx) / [api.js](frontend/src/api.js) | add an activity and refresh |
+| S7-R5 | Toggle and delete operations persist on the server | [App.jsx](frontend/src/App.jsx) / [api.js](frontend/src/api.js) | toggle/delete and refresh |
+| S7-R6 | Errors preserve form input and pending requests disable submit | [TaskForm.jsx](frontend/src/components/TaskForm.jsx) | stop API / test delayed API |
+| S7-R7 | Required data-testid attributes are present | [TaskForm.jsx](frontend/src/components/TaskForm.jsx), [TaskCard.jsx](frontend/src/components/TaskCard.jsx), [TaskList.jsx](frontend/src/components/TaskList.jsx), [App.jsx](frontend/src/App.jsx) | inspect elements in browser Console |
+| S7-R8 | README Stage 7 section and AI log updated | [README.md](README.md) / [ai-log/etapa-07.md](ai-log/etapa-07.md) | read |
+| S7-R9 | Commit "Stage 7" pushed | [Commit history](https://github.com/Anduuu1/Proiect-TW/commits/main) | commit history |
+
+### Stage 7 Checklist Status
+
+- [x] S7-R1 Controlled form with title and priority.
+- [x] S7-R2 Required title and maximum 100 characters.
+- [x] S7-R3 Shared API request function and POST/PATCH/DELETE.
+- [x] S7-R4 New activities are saved through POST.
+- [x] S7-R5 Toggle and delete operations persist on the server.
+- [x] S7-R6 Errors preserve form input and pending requests disable submit.
+- [x] S7-R7 Required data-testid attributes are present.
+- [x] S7-R8 README and AI log updated.
+- [x] S7-R9 Commit "Stage 7" pushed.
+
+
+## Stage 8: Navigare și stilizare pe componente
+
+### Implementare
+
+- Am instalat și configurat React Router pentru navigarea între pagini fără reîncărcarea documentului.
+- Am creat pagina principală pentru afișarea activităților.
+- Am implementat pagina de detalii pentru fiecare activitate, folosind ID-ul din URL.
+- Am adăugat pagina Despre și pagina 404 pentru rutele inexistente.
+- Am creat componenta Layout pentru elementele comune: header, navigare și footer.
+- Am păstrat tema dark/light și indicatorul voluntarilor.
+- Am separat stilurile componentelor folosind CSS Modules.
+- Am păstrat stilurile globale în index.css.
+- Am păstrat identificatorii data-testid necesari testării.
+
+### Rute
+
+| Rută | Pagina |
+|---|---|
+| `/` | Lista activităților |
+| `/activitati/:id` | Detalii activitate |
+| `/despre` | Despre UniHub |
+| `*` | Pagina 404 |
+
+### CSS Modules
+
+- `TaskCard.module.css`
+- `TaskForm.module.css`
+- `TaskList.module.css`
+- `Layout.module.css`
+
+### Testare
+
+- [x] Navigarea între pagini funcționează fără refresh.
+- [x] Titlul activității deschide pagina de detalii.
+- [x] Refresh-ul pe pagina de detalii funcționează.
+- [x] ID-ul inexistent afișează eroare.
+- [x] Rutele inexistente afișează pagina 404.
+- [x] Navigarea Back din browser funcționează.
+- [x] CSS Modules sunt utilizate pentru componente.
+- [x] Identificatorii data-testid sunt păstrați.
+
+
+
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
@@ -137,4 +222,7 @@ The application still supports local toggling and deleting of activities. These 
 - [x] Stage 4: Components rendered from data
 - [x] Stage 5: Local state and events
 - [x] Stage 6: Loading data from a mock API
-- [ ] Stage 7: form and validation
+- [x] Stage 7: form and validation
+- [x] Stage 8: routing and detail page
+- [ ] Stage 9: own backend with Express
+

@@ -1,4 +1,3 @@
-
 {
   "activitati": [
     {
@@ -10,7 +9,7 @@
     {
       "id": 2,
       "titlu": "Hackathon CodeSprint",
-      "gata": true,
+      "gata": false,
       "prioritate": "medie"
     },
     {
