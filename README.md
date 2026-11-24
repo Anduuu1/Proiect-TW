@@ -26,6 +26,7 @@ Sample data used across all stages:
 | ChatGPT | Stage 6: Used for configuring json-server, creating db.json, separating API requests into api.js, configuring environment variables, implementing useEffect for data fetching, and handling loading and error states. |
 | ChatGPT | Stage 7: Used for implementing controlled form inputs, title validation, POST/PATCH/DELETE API requests, error handling, submission state, data-testid attributes, and testing API persistence. |
 | ChatGPT | Stage 8: Used for implementing React Router navigation, activity detail pages, shared layouts, About and Not Found pages, CSS Modules, preserving data-testid attributes, and testing routes and navigation. |
+| ChatGPT | Stage 9: Used for setting up a custom Node.js and Express backend, implementing the five REST API operations (GET, GET by ID, POST, PATCH, DELETE), server-side validation, CORS configuration, error handling, the `/health` endpoint, frontend integration, removing json-server, testing API requests using REST Client, and updating the project documentation. |
 
 ## How to run
 
