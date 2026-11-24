@@ -1,0 +1,36 @@
+### GET - Toate activitățile
+GET http://localhost:3001/activitati
+
+### POST - Adaugă activitate
+POST http://localhost:3001/activitati
+Content-Type: application/json
+
+{
+  "titlu": "Activitate test API",
+  "prioritate": "mare",
+  "gata": false
+}
+### PATCH - Modifică activitatea
+PATCH http://localhost:3001/activitati/6
+Content-Type: application/json
+
+{
+  "titlu": "Activitate test API modificată",
+  "gata": true
+}
+
+
+### DELETE - Șterge activitatea
+DELETE http://localhost:3001/activitati/6
+### GET - Verifică ștergerea
+GET http://localhost:3001/activitati/6
+
+### POST - Test titlu invalid
+POST http://localhost:3001/activitati
+Content-Type: application/json
+
+{
+  "titlu": " ",
+  "prioritate": "mare",
+  "gata": false
+}

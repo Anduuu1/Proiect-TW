@@ -171,28 +171,28 @@ Data-testid attributes were added to the form, activity cards, loading state, er
 - [x] S7-R9 Commit "Stage 7" pushed.
 
 
-## Stage 8: Navigare și stilizare pe componente
+## Stage 8: Routing and Component Styling
 
-### Implementare
+### Implementation
 
-- Am instalat și configurat React Router pentru navigarea între pagini fără reîncărcarea documentului.
-- Am creat pagina principală pentru afișarea activităților.
-- Am implementat pagina de detalii pentru fiecare activitate, folosind ID-ul din URL.
-- Am adăugat pagina Despre și pagina 404 pentru rutele inexistente.
-- Am creat componenta Layout pentru elementele comune: header, navigare și footer.
-- Am păstrat tema dark/light și indicatorul voluntarilor.
-- Am separat stilurile componentelor folosind CSS Modules.
-- Am păstrat stilurile globale în index.css.
-- Am păstrat identificatorii data-testid necesari testării.
+- Installed and configured React Router for navigation between pages without reloading the document.
+- Created the home page for displaying activities.
+- Implemented a detail page for each activity, using the ID from the URL.
+- Added the About page and the 404 page for unknown routes.
+- Created the Layout component for shared elements: header, navigation and footer.
+- Preserved the dark/light theme and the volunteer progress indicator.
+- Separated component styles using CSS Modules.
+- Kept global styles in `index.css`.
+- Preserved the `data-testid` attributes required for testing.
 
-### Rute
+### Routes
 
-| Rută | Pagina |
+| Route | Page |
 |---|---|
-| `/` | Lista activităților |
-| `/activitati/:id` | Detalii activitate |
-| `/despre` | Despre UniHub |
-| `*` | Pagina 404 |
+| `/` | Activities list |
+| `/activitati/:id` | Activity details |
+| `/despre` | About UniHub |
+| `*` | 404 page |
 
 ### CSS Modules
 
@@ -201,28 +201,79 @@ Data-testid attributes were added to the form, activity cards, loading state, er
 - `TaskList.module.css`
 - `Layout.module.css`
 
-### Testare
+### Testing
 
-- [x] Navigarea între pagini funcționează fără refresh.
-- [x] Titlul activității deschide pagina de detalii.
-- [x] Refresh-ul pe pagina de detalii funcționează.
-- [x] ID-ul inexistent afișează eroare.
-- [x] Rutele inexistente afișează pagina 404.
-- [x] Navigarea Back din browser funcționează.
-- [x] CSS Modules sunt utilizate pentru componente.
-- [x] Identificatorii data-testid sunt păstrați.
+- [x] Navigation between pages works without a page refresh.
+- [x] Clicking an activity title opens its detail page.
+- [x] Refreshing the detail page works correctly.
+- [x] An invalid activity ID displays an error.
+- [x] Unknown routes display the 404 page.
+- [x] Browser Back navigation works.
+- [x] CSS Modules are used for component styling.
+- [x] The required `data-testid` attributes are preserved.
 
+## Stage 9: Own Backend with Express
 
+### Implementation
 
+- Created a separate backend using Node.js and Express.
+- Implemented the REST API for activities.
+- Added the five required operations: GET all, GET by ID, POST, PATCH and DELETE.
+- Implemented server-side validation for activity data.
+- Added appropriate HTTP status codes and error handling.
+- Configured CORS to allow requests from the frontend.
+- Added the `/health` endpoint to check server availability.
+- Separated the Express application (`app.js`) from the server startup file (`server.js`).
+
+### Data Storage
+
+Activity data is currently stored in memory on the backend. The data is reset when the backend server is restarted. Database integration will be implemented in Stage 10.
+
+### How to Run
+
+**Backend:**
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+The backend runs at `http://localhost:3001`.
+
+**Frontend:**
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend runs at `http://localhost:5173`.
+
+Health check: `http://localhost:3001/health`
+
+### Testing
+
+- [x] All five REST operations were tested using the REST Client extension.
+- [x] Creating an activity returns HTTP 201.
+- [x] Updating an activity works correctly.
+- [x] Deleting an activity returns HTTP 204.
+- [x] Requesting a nonexistent activity returns HTTP 404.
+- [x] Submitting an empty title returns HTTP 400 with an error message.
+- [x] The frontend communicates with the Express backend.
+- [x] CORS allows requests from the frontend.
+- [x] Removed `json-server`, its npm script and `frontend/db.json`.
 
 ## Status
+
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
-- [x] Stage 4: Components rendered from data
-- [x] Stage 5: Local state and events
-- [x] Stage 6: Loading data from a mock API
+- [x] Stage 4: components rendered from data
+- [x] Stage 5: local state and events
+- [x] Stage 6: loading data from a mock API
 - [x] Stage 7: form and validation
 - [x] Stage 8: routing and detail page
-- [ ] Stage 9: own backend with Express
-
+- [x] Stage 9: own backend with Express
+- [ ] Stage 10: MariaDB and full CRUD

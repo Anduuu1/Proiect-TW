@@ -13,10 +13,13 @@ async function request(path, options = {}) {
   });
 
   if (!res.ok) {
-    throw new Error(`Eroare server: ${res.status}`);
+    // Citim mesajul de eroare trimis de Express
+    const body = await res.json().catch(() => ({}));
+
+    throw new Error(body.error || `Eroare server: ${res.status}`);
   }
 
-  // Unele răspunsuri DELETE pot să nu aibă conținut
+  // DELETE poate returna 204 fără conținut
   return res.status === 204 ? null : res.json();
 }
 
